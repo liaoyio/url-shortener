@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import {
   LinkIcon,
   XMarkIcon,
@@ -21,12 +21,17 @@ const shortenedLinkRef = ref();
 
 // 提交
 const submit = async (url) => {
-  loading.value = true;
-  const { link } = await shorten(url);
-  shortenedLink.value = link;
-  const result = await OpenGraph(url);
-  OG.value = result;
-  loading.value = false;
+  try {
+    loading.value = true;
+    const { link } = await shorten(url);
+    shortenedLink.value = link;
+    const result = await OpenGraph(url);
+    OG.value = result;
+    loading.value = false;
+  } catch (error) {
+    console.error("发生错误！！！");
+    console.error(error);
+  }
 };
 
 // 选中 & 复制
@@ -53,6 +58,7 @@ const select = () => {
     </header>
     <main class="main">
       <form class="main__form" @submit.prevent="submit(url)">
+        <!-- Input and Submit button -->
         <div class="input-box">
           <LinkIcon class="icon link-icon"></LinkIcon>
           <input
@@ -67,10 +73,12 @@ const select = () => {
         </div>
         <input class="submit" type="submit" value="Short" />
       </form>
+      <!-- Loading icon -->
       <div class="main-loading" v-if="loading">
         <ArrowPathIcon class="icon icon arrow-path-icon" />
       </div>
       <div class="main-result" v-if="!loading && shortenedLink">
+        <!-- Shortened link and link preview -->
         <div class="result__url">
           <ShieldCheckIcon class="icon shield-check-icon" />
           <p class="shortenedLink" ref="shortenedLinkRef">
