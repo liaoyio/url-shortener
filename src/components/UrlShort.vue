@@ -88,7 +88,7 @@ const select = () => {
           <div class="result__link-preview__text">
             <h2 class="title">{{ OG.title }}</h2>
             <p class="des">{{ OG.description }}</p>
-            <p class="url">{{ OG.url }}</p>
+            <p class="url">{{ OG.site_name || OG.url }}</p>
           </div>
           <div class="result__link-preview__picture">
             <img class="img" :src="OG.image[0].url" alt="" />
@@ -217,6 +217,10 @@ const select = () => {
           justify-content: space-between;
           gap: 10px;
           .title {
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
             color: #0e1119;
           }
           .des {
@@ -234,6 +238,8 @@ const select = () => {
           flex-basis: 300px;
           .img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
             vertical-align: middle;
           }
         }

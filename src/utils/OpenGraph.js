@@ -3,7 +3,7 @@
  */
 
 const access_token =
-  "EAACIjMruogEBO4iWJO2cSFzyzKTpnCLBhhU422tHeVYWy1iKHldLBvtwybHoeFLcfwrjLPBHNzVMMs6BKkbjmruwoRNnL9qpm7Hhl1OrmdsZCRlBiAvEmILqa3mp2nnPhtZAZAW95kdOhVzwpDphcDBtJwVgx5XQOYnNKaGJOlxMUchZC0crxaCTjGW3gIR8xth9bZBYPhb0DoQZDZD";
+  "EAACIjMruogEBO4bcGBSG7ZATm1MKgQh1aOCA0pJZBPUAl9wZBZBTmztDRtdEdVLSxIEO4DFc63T3SrIFmivbAF7MMcKDjHarXdQae2YnQioR3FgLgUmxgTSy5eNunNGR2v0tXp6ZCyt2mVg3qZBqW5iUQSGyKLYza1qAXY2JgoWCt1jZByRCKhZB1Oa3";
 const API = new URL("v17.0", "https://graph.facebook.com");
 API.searchParams.set("access_token", access_token);
 
