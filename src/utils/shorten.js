@@ -1,5 +1,5 @@
 const API = "https://api-ssl.bitly.com/v4/shorten";
-const TOKEN = "2eb19ec870d76d56559ee96fd5621a58571bbdff";
+const TOKEN = import.meta.env.VITE_BITLY_TOKEN;
 
 export default async function shorten(longUrl) {
   const response = await fetch(API, {

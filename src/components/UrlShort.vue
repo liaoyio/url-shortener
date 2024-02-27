@@ -27,7 +27,6 @@ const submit = async (url) => {
     shortenedLink.value = link;
     const result = await OpenGraph(url);
     OG.value = result?.ogp;
-    console.log(OG.value)
     loading.value = false;
   } catch (error) {
     console.error("发生错误！！！");
