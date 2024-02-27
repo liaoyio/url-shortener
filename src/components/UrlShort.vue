@@ -12,7 +12,7 @@ import { ClipboardDocumentCheckIcon as ClipboardDocumentCheckIconSolid } from "@
 import shorten from "../utils/shorten";
 import OpenGraph from "../utils/OpenGraph";
 
-const url = ref("");
+const url = ref("https://www.github.com");
 const shortenedLink = ref("");
 const loading = ref(false);
 const selected = ref(false);
@@ -26,7 +26,8 @@ const submit = async (url) => {
     const { link } = await shorten(url);
     shortenedLink.value = link;
     const result = await OpenGraph(url);
-    OG.value = result;
+    OG.value = result?.ogp;
+    console.log(OG.value)
     loading.value = false;
   } catch (error) {
     console.error("发生错误！！！");
@@ -94,12 +95,15 @@ const select = () => {
         </div>
         <a :href="url" target="_blank" class="result__link-preview">
           <div class="result__link-preview__text">
-            <h2 class="title">{{ OG.title }}</h2>
-            <p class="des">{{ OG.description }}</p>
-            <p class="url">{{ OG.site_name || OG.url }}</p>
+            <h2 class="title">{{ OG?.['og:title']?.[0] }}</h2>
+            <p class="des">{{ OG?.['og:description']?.[0] }}</p>
+            <p class="url">{{ OG?.['og:url']?.[0]}}</p>
           </div>
           <div class="result__link-preview__picture">
-            <img class="img" :src="OG.image[0].url" alt="" />
+            <img
+              class="img"
+              :src="OG?.['og:image']?.[0]"
+              :alt="OG?.['og:image:alt']?.[0]" />
           </div>
         </a>
       </div>

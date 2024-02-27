@@ -2,30 +2,23 @@
  * 获取 OG 信息
  */
 
-const access_token =
-  "EAACIjMruogEBO4bcGBSG7ZATm1MKgQh1aOCA0pJZBPUAl9wZBZBTmztDRtdEdVLSxIEO4DFc63T3SrIFmivbAF7MMcKDjHarXdQae2YnQioR3FgLgUmxgTSy5eNunNGR2v0tXp6ZCyt2mVg3qZBqW5iUQSGyKLYza1qAXY2JgoWCt1jZByRCKhZB1Oa3";
-const API = new URL("v17.0", "https://graph.facebook.com");
-API.searchParams.set("access_token", access_token);
+const options = {
+  method: "GET",
+  headers: {
+    "X-RapidAPI-Key": import.meta.env.X_RAPIDAPI_KEY,
+    "X-RapidAPI-Host": "link-preview4.p.rapidapi.com",
+  },
+};
 
 export default async (url) => {
-  let obj = {
-    debug: "all",
-    format: "json",
-    id: url,
-    method: "post",
-    pretty: 0,
-    scrape: true,
-    suppress_http_code: 1,
-    transport: "cors",
-  };
-  let formData = new FormData();
-  for (const key in obj) {
-    formData.set(key, obj[key]);
+  let fullURL = new URL("https://link-preview4.p.rapidapi.com/");
+  fullURL.searchParams.append("url", encodeURI(url));
+  fullURL.searchParams.append("oembed", "false");
+  try {
+    const response = await fetch(fullURL.href, options);
+    const result = await response.text();
+    return JSON.parse(result);
+  } catch (error) {
+    console.error(error);
   }
-  const response = await fetch(API, {
-    method: "POST",
-    body: formData,
-  });
-  const result = await response.json();
-  return result;
 };
