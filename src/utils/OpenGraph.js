@@ -5,7 +5,7 @@
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": import.meta.env.X_RAPIDAPI_KEY,
+    "X-RapidAPI-Key": import.meta.env.VITE_X_RAPIDAPI_KEY,
     "X-RapidAPI-Host": "link-preview4.p.rapidapi.com",
   },
 };
