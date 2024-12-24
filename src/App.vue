@@ -7,5 +7,3 @@ import UrlShort from "./components/UrlShort.vue";
     <UrlShort />
   </Suspense>
 </template>
-
-<style scoped></style>
