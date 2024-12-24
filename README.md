@@ -1,7 +1,7 @@
-# Vue 3 + Vite
+# URL Shortener
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+基于 Vue3 + Vite 技术栈开发的高性能短链接服务平台。
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- [x] 采用 [Bitly](https://bitly.com/) 提供缩短服务
+- [x] 利用 FaceBook API 生成 OpenGraph 缩略图
+- [x] 通过原生 DOM API 实现一键复制功能
